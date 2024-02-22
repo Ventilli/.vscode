@@ -32,30 +32,6 @@ def welcome(message:Message):
 
     print(message.chat.username)
 
-def clear_chat(message):
-    # chat_id = message.chat.id
-    # message_id = message.message_id
-    
-    # # Получаем список всех сообщений в чате
-    # messages = BOT.fetch_all(chat_id)
-    
-    # # Удаляем каждое сообщение
-    # for m in messages:
-    #     BOT.delete_message(chat_id, m.message_id)
-    
-    # # Удаляем сообщение, которое отправил пользователь
-    # BOT.delete_message(chat_id, message_id)
-    # Replace 'chat_id' with the ID of the chat
-
-    chat_id = message.chat.id
-
-    # Get all messages in the chat
-    messages = BOT.get_chat(chat_id).get('messages')
-
-    # Delete each message
-    for message in messages:
-        BOT.delete_message(chat_id, message.get('message_id'))
-
 def it_is_death(chat_id):
     global name, dead
     markup = InlineKeyboardMarkup(row_width=1)
