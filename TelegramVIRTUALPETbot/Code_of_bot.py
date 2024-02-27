@@ -178,7 +178,7 @@ def play_handler(message : Message):
     
         print(message.chat.username)
 
-@BOT.message_handler(content_types=['text'])
+@BOT.message_handler(content_types=[''])
 def text_handler(message):
     if dead == True:
         BOT.send_message(message.chat.id, 'Твой питомец умер!')
