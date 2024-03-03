@@ -1,4 +1,4 @@
-import speech_recognition as SR
+# import speech_recognition as SR
 import telebot
 from telebot.types import Message
 
@@ -9,16 +9,18 @@ BOT = telebot.TeleBot(token = TOKEN)
 
 
 
-recog = SR.Recognizer()
+# def audio(audio):
+#     recog = SR.Recognizer()
 
-def audio(audio):
-    try:
-        text = recog.recognize_google(audio, language="ru")
-        return "В сообщении сказано: " + '"' + text + '"'
-    except SR.UnknownValueError:
-        return "Извините, не удалось распознать речь."
-    except SR.RequestError as e:
-        return "Ошибка сервиса распознавания речи; {0}".format(e)
+#     try:
+#         text = recog.recognize_google(audio, language="ru")
+#         return "В сообщении сказано: " + '"' + text + '"'
+#     except SR.UnknownValueError:
+#         return "Извините, не удалось распознать речь."
+#     except SR.RequestError as e:
+#         return "Ошибка сервиса распознавания речи; {0}".format(e)
+
+
 
 @BOT.message_handler(commands=['start'])
 def welcome(message:Message):
@@ -27,9 +29,12 @@ def welcome(message:Message):
     
     print(message.chat.username)
 
-@BOT.message_handler(content_types=['audio'])
+@BOT.message_handler(content_types=['audio', 'voice'])
 def audio_formatting(message:Message):
-    BOT.reply_to(message, audio(message))
+    # BOT.reply_to(message, audio(message))
+    print('vhgbjhnkm')
+    BOT.reply_to(message, 'FEEEEEE')
+    print('vhgbjhnkm')
 
 # r = SR.Recognizer()
 
