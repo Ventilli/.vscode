@@ -3,6 +3,7 @@ import speech_recognition as SR
 import subprocess
 import requests
 import telebot
+import time
 import os
 
 
@@ -41,7 +42,9 @@ def audio_formatting(message:Message):
     doc = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(TOKEN, file_info.file_path)) # Получаем и сохраняем присланную голосвуху. От автора: Ага, админ может в любой момент отключить удаление айдио файлов и слушать все, что ты там говоришь. А представь, что такую бяку подселят в огромный чат и она будет просто логировать все сообщения [анонимность в телеграмме, ахахаха]
     with open('Final_project_Python_start/Audio_bot/'+file_name, 'wb') as f:
         f.write(doc.content)
-    subprocess.run(['ffmpeg', '-i', 'Audio_bot/file_27.oga', 'Audio_bot/file_27.wav'])
+        subprocess.run(['ffmpeg', '-i', 'Audio_bot/file_27.oga', 'Audio_bot/file_27.wav'])
+    time.sleep(1)
+    
 
 
 
@@ -49,7 +52,7 @@ def audio_formatting(message:Message):
     # downloaded_file = BOT.download_file(file_info.file_path)
     # print(downloaded_file)
     # print(message.voice)
-    BOT.reply_to(message, format(audio(fname+'.wav')))
+    BOT.reply_to(message, format(audio(file_name+'.wav')))
 
 # r = SR.Recognizer()
 
